@@ -29,11 +29,6 @@ use App\Http\Controllers\ListingController;
 // All listings
 Route::get('/', [ListingController::class, 'index'])->name('home');
 
-// Show create form
-Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
-
-// Edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 // Update submit
 Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
@@ -64,6 +59,20 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // login user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+Route::group(['middleware' => ['auth']], function () {
+    
+    
+    // Show create form
+    Route::get('/listings/create', [ListingController::class, 'create']);
+
+    // Edit form
+    Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+    //You can use Resource route Here
+    //https://www.itsolutionstuff.com/post/laravel-9-resource-route-and-controller-exampleexample.html
+   }
+);
+
 
 // Route::get('/hello', function () {
 //     return response('<h1>hello world</h1>', 200)
