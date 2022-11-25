@@ -2,6 +2,7 @@
   <div class="max-w-lg mx-auto">
     <x-card>
       <form action="/listings" method="POST" enctype="multipart/form-data">
+      //Aikhane Route name use koren . Like action="{{route('listing.store')}}" 
         @csrf
         <div class="mb-6">
           <label
