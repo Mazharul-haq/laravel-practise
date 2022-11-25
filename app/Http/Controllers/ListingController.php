@@ -52,6 +52,8 @@ class ListingController extends Controller
             'tags'        => 'required',
             'description' => 'required'
         ]);
+        //Aigula Request dia validate kore nen controller er majhe aigula dile code onk boro hoye jabe 
+        //https://laravel.com/docs/9.x/validation
 
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
